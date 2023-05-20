@@ -1,0 +1,205 @@
+/* ********** ********** ********** ********** ********** ********** ********** */
+/* HOJA DE ESTILOS "CONVERTIDOR DE NUMEROS ROMANOS" */
+/* ********** ********** ********** ********** ********** ********** ********** */
+
+/* INSTRUCCIONES GENERALES. */
+* {
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+    font-family: Tahoma;
+    font-size: 1.8rem;
+    scroll-behavior: smooth;
+}
+
+@font-face{	
+    font-family: 'TitanOne-Regular';
+    src: url('../font/TitanOne-Regular.ttf');
+}
+
+html {     
+    position: relative;  
+    font-size: 62.5%;
+    background: rgb(25, 25, 25);
+}
+
+/* FORMATO PAGINA WEB. */
+body {    
+    max-width: 900px;
+    margin: 0 auto; 
+    padding: 2.5rem;
+    background: rgba(255, 245, 245, 1);     
+    border-left: 5rem solid rgb(100, 0, 0);
+    border-right: 5rem solid rgb(100, 0, 0);
+}
+
+h1 {
+    padding: 0 1rem 1rem;
+    font-family: 'TitanOne-Regular';
+    font-size: 3.5rem;
+    font-weight: normal;
+    text-align: center;
+}
+
+h3 {
+    margin-left: -1rem;
+    padding: 0.5rem 1rem 0;
+    font-size: 2.2rem;
+}
+
+p {
+    margin: 2rem 0;
+}
+
+.especial {
+    padding-left: 1rem;
+    font-family: serif;
+    border-left: 0.8rem solid rgb(255, 0, 0);
+}
+
+.especial strong {
+    font-family: serif;
+}
+
+.centrado {
+    margin-bottom: 0.7rem;
+    text-align: center;
+}
+
+.derecha {
+    font-family: serif;
+    font-weight: bold;
+    text-align: right;
+}
+
+li {
+    margin-left: 4rem;
+    padding: 0 1rem 0.5rem 0;
+    list-style: square;
+}
+
+hr {
+    height: 0.2rem;
+    margin: 2rem 0 1rem;
+    background: rgb(255, 0, 0);        
+    border: 0.1rem solid rgb(255, 0, 0);
+}
+
+input[type=number] {
+    outline: none;
+    display: block;
+    width: 100%;
+    margin: 2.5rem auto;
+    padding: 1rem;
+    font-family: serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    border: 0.1rem dotted rgb(255, 0, 0);
+    border-radius: 0.5rem;
+}
+
+input[type=number]:focus {
+    border: 0.1rem solid rgb(200, 0, 0);
+}
+
+.contenedor {
+    width: 100%;
+    min-height: 4.5rem;
+    margin: 2.5rem auto;
+    padding: 1rem;
+    font-family: serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    background: white;
+    border: 0.1rem solid rgb(200, 0, 0);
+    border-radius: 0.5rem;
+}
+
+button {
+    display: block;
+    width: 100%;
+    margin: 0 auto 1.5rem;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    background: rgb(255, 0, 0);
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: rgb(200, 0, 0);
+}
+
+button:active {
+    background: rgb(255, 0, 0);
+}
+
+.resetear-campos {
+    background: rgb(0, 155, 255);
+}
+
+.resetear-campos:hover {
+    background: rgb(0, 100, 255);
+}
+
+.resetear-campos:active {
+    background: rgb(0, 155, 255);
+}
+
+/* LOGO <R/>. */
+#logo {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    height: 5rem;
+    width: 5rem;
+    background-image: url("../img/logo-r-color.svg");
+    background-size: contain;
+    background-position: center;   
+    background-repeat: no-repeat;
+    filter: opacity(50%);
+}
+
+/*  BOTON SUBIR.  */
+#subir {
+    position: fixed;
+    bottom: 1rem;
+    right: 7rem;
+    height: 5rem;
+    width: 5rem;
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(200, 200, 200, 0.55);
+    background: rgba(150, 150, 150, 0.35);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    z-index: 5;
+}
+
+#subir:hover {
+    color: white;
+    background: hsla(0, 95%, 45%, 1.00);
+}
+
+#subir:active {
+    color: rgba(50, 50, 50, 0.55);
+    background: rgba(150, 150, 150, 0.35);
+}
+
+/*  MARGENES EN DISPOSITIVOS DE 700px O MENOS.  */
+@media only screen and (max-width: 700px) {
+    body {    
+        border-left: 0.2rem solid rgb(100, 0, 0);
+        border-right: 0.2rem solid rgb(100, 0, 0);
+    } 
+}    
+
+/* ********** ********** ********** ********** ********** ********** ********** */
+/* ********** ********** ********** ********** ********** ********** ********** */

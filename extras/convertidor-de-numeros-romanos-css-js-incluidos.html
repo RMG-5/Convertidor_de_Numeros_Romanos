@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+    <head>
+        <!-- CABECERA "CONVERTIDOR DE NUMEROS ROMANOS" -->
+        <meta charset="UTF-8" />
+        <meta name="keywords" content="Numeros Romanos, JavaScript, HTML, CSS" />
+        <meta name="description" content="Aplicación WEB para convertir números indoarabígos en romanos" /> 
+        <meta name="author" content="Ricardo García - R.M.G." /> 
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />           
+        <title>Los Números Romanos</title>
+        <link 
+            href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" 
+            rel="stylesheet" 
+        />   
+        
+        <style>
+            /* ESTILOS "CONVERTIDOR DE NUMEROS ROMANOS". */
+            * {
+                box-sizing: border-box;
+                margin: 0; 
+                padding: 0;
+                font-family: Tahoma;
+                font-size: 1.8rem;
+                scroll-behavior: smooth;
+            }
+
+            html {     
+                position: relative;  
+                font-size: 62.5%;
+                background: rgb(25, 25, 25);
+            }
+
+            body {    
+                max-width: 900px;
+                margin: 0 auto; 
+                padding: 2.5rem;
+                background: rgba(255, 245, 245, 1);     
+                border-left: 5rem solid rgb(100, 0, 0);
+                border-right: 5rem solid rgb(100, 0, 0);
+            }
+
+            h1 {
+                padding: 0 1rem 1rem;
+                font-family: 'Titan One';
+                font-size: 3.5rem;
+                font-weight: normal;
+                text-align: center;
+            }
+
+            h3 {
+                margin-left: -1rem;
+                padding: 0.5rem 1rem 0;
+                font-size: 2.2rem;
+            }
+
+            p {
+                margin: 2rem 0;
+            }
+
+            .especial {
+                padding-left: 1rem;
+                font-family: serif;
+                border-left: 0.8rem solid rgb(255, 0, 0);
+            }
+
+            .especial strong {
+                font-family: serif;
+            }
+
+            .centrado {
+                margin-bottom: 0.7rem;
+                text-align: center;
+            }
+
+            .derecha {
+                font-family: serif;
+                font-weight: bold;
+                text-align: right;
+            }
+
+            li {
+                margin-left: 4rem;
+                padding: 0 1rem 0.5rem 0;
+                list-style: square;
+            }
+
+            hr {
+                height: 0.2rem;
+                margin: 2rem 0 1rem;
+                background: rgb(255, 0, 0);        
+                border: 0.1rem solid rgb(255, 0, 0);
+            }
+
+            input[type=number] {
+                outline: none;
+                display: block;
+                width: 100%;
+                margin: 2.5rem auto;
+                padding: 1rem;
+                font-family: serif;
+                font-size: 2rem;
+                font-weight: bold;
+                text-align: center;
+                border: 0.1rem dotted rgb(255, 0, 0);
+                border-radius: 0.5rem;
+            }
+
+            input[type=number]:focus {
+                border: 0.1rem solid rgb(200, 0, 0);
+            }
+
+            .contenedor {
+                width: 100%;
+                min-height: 4.5rem;
+                margin: 2.5rem auto;
+                padding: 1rem;
+                font-family: serif;
+                font-size: 2rem;
+                font-weight: bold;
+                text-align: center;
+                background: white;
+                border: 0.1rem solid rgb(200, 0, 0);
+                border-radius: 0.5rem;
+            }
+
+            button {
+                display: block;
+                width: 100%;
+                margin: 0 auto 1.5rem;
+                padding: 1rem;
+                font-size: 2rem;
+                font-weight: bold;
+                color: white;
+                background: rgb(255, 0, 0);
+                border: none;
+                border-radius: 0.5rem;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background: rgb(200, 0, 0);
+            }
+
+            button:active {
+                background: rgb(255, 0, 0);
+            }
+
+            .resetear-campos {
+                background: rgb(0, 155, 255);
+            }
+
+            .resetear-campos:hover {
+                background: rgb(0, 100, 255);
+            }
+
+            .resetear-campos:active {
+                background: rgb(0, 155, 255);
+            }
+
+            #subir {
+                position: fixed;
+                bottom: 1rem;
+                right: 1rem;
+                height: 5rem;
+                width: 5rem;
+                font-size: 5rem;
+                font-weight: bold;
+                text-align: center;
+                text-decoration: none;
+                color: rgba(200, 200, 200, 0.55);
+                background: rgba(150, 150, 150, 0.35);
+                border-radius: 0.5rem;
+                cursor: pointer;
+                z-index: 5;
+            }
+
+            #subir:hover {
+                color: white;
+                background: hsla(0, 95%, 45%, 1.00);
+            }
+
+            #subir:active {
+                color: rgba(50, 50, 50, 0.55);
+                background: rgba(150, 150, 150, 0.35);
+            }
+
+            @media only screen and (max-width: 700px) {
+                body {    
+                    border-left: 0.2rem solid rgb(100, 0, 0);
+                    border-right: 0.2rem solid rgb(100, 0, 0);
+                } 
+            }    
+        </style>
+    </head>
+
+    <body>
+        <!-- CUERPO "CONVERTIDOR DE NUMEROS ROMANOS" -->
+        <h1>Los Números Romanos</h1>
+
+        <p class="especial">La numeración romana es un sistema de numeración que se desarrolló en la Antigua Roma y se utilizó en todo el Imperio romano, manteniéndose con posterioridad a su desaparición y todavía utilizado en algunos ámbitos. Este sistema emplea algunas letras mayúsculas como símbolos para representar ciertos valores. Los números se escriben como combinaciones de letras</p>
+
+        <p>Utiliza el siguiente espacio para escribir un número entre <strong>1</strong> y <strong>3999</strong> y te mostrare cuál es su representación en el <strong>Sistema de Numeración Romano</strong>.</p>
+
+        <input type="number" min="1" max="3999" placeholder="Escribe un número entre 1 y 3999"/>
+
+        <button id="convertir-numero">Convertir a Número Romano</button>
+
+        <p id="numero-romano" class="contenedor"></p>
+
+        <button class="resetear-campos">Resetear Campos</button>
+
+        <p>Si quieres conocer más acerca de los <strong>Números Romanos</strong> te invito a seguir leyendo.</p>
+
+        <hr/>
+        <h3>Origen de la Numeración Romana</h3>
+
+        <p>La numeración romana está basada en la numeración etrusca, la cual, a diferencia de la numeración decimal que está basada en un sistema posicional, se basa en un sistema aditivo <strong>(cada signo representa un valor que se va sumando al anterior).</strong> La numeración romana posteriormente evolucionó a un sistema sustractivo, en el cual algunos signos en lugar de sumar, restan. Por ejemplo, <strong>el 4 en la numeración etrusca se representaba como IIII (1+1+1+1), mientras que en la numeración romana moderna se representa como IV (1 restado a 5).</strong></p>
+
+        <p>Los números romanos se escriben con letras del alfabeto romano, pero originalmente provenían de los etruscos, los cuales usaban <strong>I, Λ, X, Ψ, 8</strong> y <strong>⊕</strong> para representar <strong>I, V, X, L, C</strong> y <strong>M</strong>, respectivamente. Los romanos tomaron letras parecidas a los símbolos etruscos para representar los valores. Así para <strong>I</strong> y <strong>X</strong> utilizaron las letras <strong>I</strong> y <strong>X</strong>; para <strong>Λ</strong> lo invirtieron y utilizaron la <strong>V</strong>; el símbolo <strong>Ψ</strong> no era uniforme en el etrusco y evolucionó en diversas variantes: <strong>Ψ → ᗐ → ⊥</strong>; de la última, los romanos tomaron la mitad del símbolo que se convirtió en <strong>L</strong> al ser la letra más parecida. Para <strong>8</strong> y <strong>⊕</strong> utilizaron las iniciales de los nombres en latín correspondientes a esos valores: <strong>C</strong> y <strong>M</strong>, al no haber letras similares a esos símbolos. El <strong>500</strong> inicialmente no tenía símbolo, pero el símbolo <strong>⊕</strong> del <strong>1000</strong> también se representaba a veces con <strong>Φ</strong> y de la mitad de ese símbolo cogieron la <strong>D</strong> para representar la mitad de <strong>1000</strong>.</p>
+        
+        <p>Este sistema tiene la particularidad de que los símbolos de mayor valor se escriben con anterioridad a los de menor valor, al encontrarse estos con anterioridad en la sucesión de marcas. Por este motivo, este sistema pudo evolucionar a un sistema sustractivo en el que un signo de un valor menor delante de uno mayor restaba en lugar de sumar, lo que permitía acortar la escritura de números grandes. Así el número <strong>1999</strong> pasó de <strong>M DCCCC LXXXX VIIII</strong> a <strong>M CM XC IX.</strong> Esto además facilitaba la lectura, ya que la lectura de más de <strong>3</strong> letras iguales seguidas daba lugar a errores. Así resulta más fácil leer <strong>IX</strong> que <strong>VIIII</strong>, evitando además la confusión de este último con <strong>VIII.</strong></p> 
+        
+        <p>Sin embargo hasta la edad media se combinaba el método aditivo <em>(hasta 4 letras iguales seguidas)</em> con el método sustractivo <em>(símbolos que también restan).</em> Por ejemplo, era bastante habitual representar el <strong>4</strong> con <strong>IIII</strong> en vez de <strong>IV</strong>, debido a que estas dos letras son las primeras de la palabra <strong>IVPPITER (Júpiter),</strong> el máximo dios de los romanos, por lo que se consideraba una blasfemía utilizar las iniciales de su nombre.</p>
+
+        <p>En la actualidad, no debe aparecer más de tres veces consecutivas un mismo signo. Se exceptúa la representación del <strong>4</strong> en las esferas de los relojes con números romanos, que puede hacerse como <strong>IV</strong> o como <strong>IIII</strong>.</p>
+
+        <hr/>
+        <h3>Notación moderna</h3>
+
+        <p>Aunque en textos antiguos se usaban a veces letras minúsculas para representar los números romanos, en la actualidad los números romanos se escriben solo con forma mayúscula. La única excepción son los números romanos usados para numerar apartados o elementos de una lista, que se escriben frecuentemente con minúsculas y reciben el nombre de <em>romanitos.</em></p>
+
+        <p>Hay que tener en cuenta que la numeración romana, al no ser un sistema posicional, no requiere del <strong>cero.</strong> El valor <strong>cero (ninguno, nada),</strong> al no ser realmente un valor, no se representa en un sistema aditivo como el de la numeración romana. Por este motivo, los romanos desconocían el <strong>cero</strong>, que fue introducido en Europa posteriormente con la numeración indoarábiga. Aunque el concepto de <strong>0</strong>, sí fue conocido por los romanos, y por eso en la actualidad se utiliza <strong>N</strong> para referirse al <strong>0 romano,</strong> ya que viene del latín <strong>nullus, nulo,</strong> y no del <strong>0.</strong></p>
+
+        <p><em>Para la notación moderna de los números romanos se utilizan las siguientes normas:</em></p>
+
+        <ul>
+            <li>Los números se leen de izquierda a derecha empezando por los símbolos con mayor valor, o conjunto de símbolos de mayor valor.</li>
+            <li>Un símbolo seguido de otro de igual o inferior valor, suma (por ejemplo, <strong>X X I</strong> = <strong>10+10+1</strong> = <strong>21</strong>), mientras que si está seguido de otro de mayor valor, ambos símbolos forman un conjunto en el cual debe restarse el valor del primero al valor del siguiente (por ejemplo, <strong>X IX</strong> = <strong>10+(10-1)</strong> = <strong>19</strong>).</li>
+            <li>La <em>unidad</em> (<strong>I</strong>) y los números con base <em>diez</em> (<strong>X</strong>, <strong>C</strong> y <strong>M</strong>) pueden repetirse hasta <em>tres</em> veces consecutivas como sumandos.</li>
+            <li>Los números con base <strong>cinco</strong> (<strong>V</strong>, <strong>L</strong> y <strong>D</strong>), no pueden repetirse seguidos, ya que la suma de esos dos símbolos tiene representación con alguno de los símbolos anteriores.</li>
+            <li>La <em>unidad</em> y los símbolos de base <em>diez</em> también pueden estar restando antes de un símbolo de mayor valor, pero con las siguientes normas:
+                <ul>
+                    <li>Sólo pueden aparecer restando sobre los símbolos con base <strong>cinco</strong> y <em>diez</em> de valor inmediatamente superior, pero no de otros con valores más altos (por ejemplo, <strong>IV</strong>, <strong>IX</strong> o <strong>XC</strong>, pero no <strong>IL</strong> ni <strong>IC</strong> ni <strong>XM</strong>).</li>
+                    <li>En el caso de estar restando, no pueden repetirse.</li>
+                </ul>
+            </li>
+            <li>Los símbolos con base <strong>cinco</strong> no pueden utilizarse para restar (por ejemplo, <strong>45</strong> se escribe <strong>XLV</strong> y no <strong>VL</strong>).</li>
+        </ul>
+ 
+        <hr/>
+        <p class="derecha">Espero verte pronto ¡hasta luego!</p>
+
+        <script>
+            // SCRIPT "CONVERTIDOR DE NUMEROS ROMANOS"
+            const numeroQueSeRevisa = document.querySelector("input[type='number']");
+            const convertirNumero = document.querySelector("#convertir-numero");
+            const numeroRomano = document.querySelector("#numero-romano");
+
+            const resetearCampos = document.querySelector(".resetear-campos");
+
+            const equivalencia = {
+                uni: { 0: "", 1: "I", 2: "II", 3: "III", 4: "IV", 5: "V", 6: "VI", 7: "VII", 8: "VIII", 9: "IX" }, 
+                dec: { 0: "", 1: "X", 2: "XX", 3: "XXX", 4: "XL", 5: "L", 6: "LX", 7: "LXX", 8: "LXXX", 9: "XC" },
+                cen: { 0: "", 1: "C", 2: "CC", 3: "CCC", 4: "CD", 5: "D", 6: "DC", 7: "DCC", 8: "DCCC", 9: "CM" },
+                mil: { 1: "M", 2: "MM", 3: "MMM" }
+            };
+
+            const convertirNumeroEnRomano = () => {
+                return numeroQueSeRevisa.value >= 1 && numeroQueSeRevisa.value <= 9
+                    ? (numeroRomano.textContent = equivalencia.uni[numeroQueSeRevisa.value[0]])
+                    : numeroQueSeRevisa.value >= 10 && numeroQueSeRevisa.value <= 99
+                    ? (numeroRomano.textContent =
+                        equivalencia.dec[numeroQueSeRevisa.value[0]] +
+                        equivalencia.uni[numeroQueSeRevisa.value[1]])
+                    : numeroQueSeRevisa.value >= 100 && numeroQueSeRevisa.value <= 999
+                    ? (numeroRomano.textContent =
+                        equivalencia.cen[numeroQueSeRevisa.value[0]] +
+                        equivalencia.dec[numeroQueSeRevisa.value[1]] +
+                        equivalencia.uni[numeroQueSeRevisa.value[2]])
+                    : numeroQueSeRevisa.value >= 1000 && numeroQueSeRevisa.value <= 3999
+                    ? (numeroRomano.textContent =
+                        equivalencia.mil[numeroQueSeRevisa.value[0]] +
+                        equivalencia.cen[numeroQueSeRevisa.value[1]] +
+                        equivalencia.dec[numeroQueSeRevisa.value[2]] +
+                        equivalencia.uni[numeroQueSeRevisa.value[3]])
+                    : (numeroRomano.textContent =
+                        "Por favor, escribe un número entre 1 y 3999.");
+            };
+            convertirNumero.addEventListener("click", convertirNumeroEnRomano);
+            
+            resetearCampos.addEventListener("click", function () {
+                numeroQueSeRevisa.value = "";
+                numeroRomano.textContent = "";
+            });
+        </script>
+    </body>
+    <a href="#" id="subir">^</a>
+</html>
